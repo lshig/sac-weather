@@ -23,6 +23,11 @@
       "@/*": ["./*"]
     }
   },
+  "rules": {
+    "no-unnecessary-type-assertion": true,
+    "no-object-literal-type-assertion": true,
+    "no-angle-bracket-type-assertion": true
+  },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
   "exclude": ["node_modules"]
 }

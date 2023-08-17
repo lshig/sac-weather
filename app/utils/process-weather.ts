@@ -14,20 +14,20 @@ export function isTimeToday(timestamp: string) {
 }
 
 export function processDayNightWeather(rawWeather: WeatherResponse) {
-  let rawWeatherPeriods = rawWeather.properties.periods;
-  let processedWeather = [];
+  let rawWeatherPeriods = rawWeather.properties?.periods ?? [];
+  let processedWeather: WeatherForecast = [];
 
   for (let i = 0; i < rawWeatherPeriods.length; i++) {
     processedWeather.push(rawWeatherPeriods[i]);
     processedWeather[i].isToday = isTimeToday(rawWeatherPeriods[i].startTime);
     processedWeather[i].time = processTime(rawWeatherPeriods[i].startTime);
   }
-  return processedWeather as WeatherForecast;
+  return processedWeather;
 }
 
 export function processHourlyWeather(rawWeather: WeatherResponse) {
-  let rawWeatherPeriods = rawWeather.properties.periods;
-  let processedWeather = [];
+  let rawWeatherPeriods = rawWeather.properties?.periods ?? [];
+  let processedWeather: WeatherGraphSeries = [];
 
   for (let i = 0; i < rawWeatherPeriods.length; i++) {
     let graphPoint = {
@@ -39,5 +39,5 @@ export function processHourlyWeather(rawWeather: WeatherResponse) {
     processedWeather.push(graphPoint);
   }
 
-  return processedWeather as WeatherGraphSeries;
+  return processedWeather;
 }
