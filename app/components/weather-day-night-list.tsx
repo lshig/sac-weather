@@ -10,7 +10,7 @@ export default function WeatherDayNightList({
       if (item.isToday === showOnlyToday) {
         result.push(
           <div
-            className="max-w-xs md:mx-auto grid grid-cols-2 py-6 bg-gray-200"
+            className="max-w-xs md:mx-auto grid grid-cols-2 py-6"
             key={item.number}
           >
             <div className="pr-3">
@@ -27,7 +27,7 @@ export default function WeatherDayNightList({
               <h2 className="text-3xl font-bold tracking-tight sm:text-5xl">
                 {item.temperature}&deg;{item.temperatureUnit}
               </h2>
-              <p className="txt-base lowercase">{item.shortForecast}</p>
+              <p className="txt-base capitalize">{item.shortForecast}</p>
             </div>
           </div>
         );
