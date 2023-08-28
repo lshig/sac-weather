@@ -1,8 +1,17 @@
+import type { Metadata } from 'next';
 import { getDayNightWeather, getHourlyWeather } from './utils/get-weather';
-import WeatherSection from './components/weather-section';
+import Section from './components/section';
+import H1 from './components/h1';
+import H2 from './components/h2';
+import H3 from './components/h3';
 import WeatherDayNightList from './components/weather-day-night-list';
 import WeatherHourlyChart from './components/weather-hourly-chart';
 import DateTimeDisplay from './components/date-time-display';
+
+export const metadata: Metadata = {
+  title: 'Weather Forecast for Sacramento, CA',
+  description: 'A Next.js app with the NWS weather API'
+};
 
 export default async function Page() {
   const dayNightWeather = await getDayNightWeather();
@@ -10,21 +19,26 @@ export default async function Page() {
 
   return (
     <div>
-      <WeatherSection title="Time & Date">
+      <Section title="Location">
+        <H1>Sacramento, CA</H1>
+        <H2>95814</H2>
+        <H3>38.5816&deg; N, 121.4944&deg; W</H3>
+      </Section>
+      <Section title="Time & Date">
         <DateTimeDisplay />
-      </WeatherSection>
-      <WeatherSection title="Today">
+      </Section>
+      <Section title="Today">
         <WeatherDayNightList listItems={dayNightWeather} showOnlyToday={true} />
-      </WeatherSection>
-      <WeatherSection title="Extended Days & Nights">
+      </Section>
+      <Section title="Extended Days & Nights">
         <WeatherDayNightList
           listItems={dayNightWeather}
           showOnlyToday={false}
         />
-      </WeatherSection>
-      <WeatherSection title="Hourly">
+      </Section>
+      <Section title="Hourly">
         <WeatherHourlyChart chartPoints={hourlyWeather} />
-      </WeatherSection>
+      </Section>
     </div>
   );
 }

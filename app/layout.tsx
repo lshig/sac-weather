@@ -1,27 +1,51 @@
+'use client';
+
 import './globals.css';
-import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+import { useState } from 'react';
+import Navigation from './components/navigation';
+import { ThemeContext } from './context';
 
 const inter = Inter({ subsets: ['latin'] });
-
-export const metadata: Metadata = {
-  title: 'Weather Forecast for Sacramento, CA',
-  description: 'A Next.js app with the NWS weather API'
-};
 
 export default function RootLayout({
   children
 }: {
   children: React.ReactNode;
 }) {
+  const [theme, setTheme] = useState('light');
+
   return (
-    <html lang="en">
-      <body className={`${inter.className} bg-white`}>
-        <h1 className="text-4xl font-bold px-6 py-6 md:px-8 md:py-8 text-center">
-          Weather Forecast for Sacramento, CA
-        </h1>
-        {children}
-      </body>
-    </html>
+    <ThemeContext.Provider value={{ theme, setTheme }}>
+      <html lang="en" className={theme}>
+        <body
+          className={`${inter.className} bg-white text-black dark:bg-black dark:text-white`}
+        >
+          <Navigation>
+            <button
+              type="button"
+              aria-label="Use Dark Mode"
+              className="visible dark:invisible bg-gray-800 hover:bg-gray-900 shadow-lg rounded-lg p-4 text-white absolute top-0 right-0"
+              onClick={(e) => {
+                setTheme('dark');
+              }}
+            >
+              DARK
+            </button>
+            <button
+              type="button"
+              aria-label="Use Light Mode"
+              className="invisible dark:visible bg-gray-500 hover:bg-gray-600 shadow-lg rounded-lg p-4 text-black absolute top-0 right-0"
+              onClick={(e) => {
+                setTheme('light');
+              }}
+            >
+              LIGHT
+            </button>
+          </Navigation>
+          {children}
+        </body>
+      </html>
+    </ThemeContext.Provider>
   );
 }

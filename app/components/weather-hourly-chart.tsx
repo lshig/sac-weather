@@ -96,10 +96,7 @@ export default function WeatherHourlyChart({ chartPoints }: WeatherGraphProps) {
   });
 
   return (
-    <div
-      className="mx-auto max-w-4xl px-6 py-6 md:px-8 md:py-8 bg-gray-200"
-      style={{ height: '60vh' }}
-    >
+    <div style={{ height: '60vh' }}>
       <Line data={data} options={chartOptions} />
     </div>
   );

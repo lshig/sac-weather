@@ -1,5 +1,8 @@
 import { Weather, WeatherForecastProps } from '../utils/get-weather';
 import Image from 'next/image';
+import H1 from './h1';
+import H2 from './h2';
+import H3 from './h3';
 
 export default function WeatherDayNightList({
   listItems,
@@ -23,11 +26,11 @@ export default function WeatherDayNightList({
               />
             </div>
             <div>
-              <h1 className="text-base font-semibold uppercase">{item.name}</h1>
-              <h2 className="text-3xl font-bold tracking-tight sm:text-5xl">
+              <H1>{item.name}</H1>
+              <H2>
                 {item.temperature}&deg;{item.temperatureUnit}
-              </h2>
-              <p className="txt-base capitalize">{item.shortForecast}</p>
+              </H2>
+              <H3>{item.shortForecast}</H3>
             </div>
           </div>
         );
@@ -43,9 +46,5 @@ export default function WeatherDayNightList({
       ? ''
       : 'grid grid-cols-1 md:grid-cols-2';
 
-  return (
-    <div className="mx-auto max-w-4xl px-6 py-6 md:px-8 md:py-8 bg-gray-200">
-      <div className={isTonight}>{WeatherDayNightListItems}</div>
-    </div>
-  );
+  return <div className={isTonight}>{WeatherDayNightListItems}</div>;
 }
