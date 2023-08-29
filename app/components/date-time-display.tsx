@@ -1,8 +1,6 @@
 import moment from 'moment';
 import 'moment-timezone';
-import H1 from './h1';
-import H2 from './h2';
-import H3 from './h3';
+import HeadingsSection from './headings-section';
 
 export default function DateTimeDisplay() {
   const dateTimeNow = moment().tz('America/Los_Angeles');
@@ -24,11 +22,11 @@ export default function DateTimeDisplay() {
           </div>
         </div>
       </div>
-      <div className="text-black dark:text-white">
-        <H1>{`${dateTimeNow.format('dddd')} now`}</H1>
-        <H2>{dateTimeNow.format('h:mmA')}</H2>
-        <H3>{dateTimeNow.format('MMMM D (z)')}</H3>
-      </div>
+      <HeadingsSection
+        top={`${dateTimeNow.format('dddd')} now`}
+        middle={dateTimeNow.format('h:mmA')}
+        last={dateTimeNow.format('MMMM D (z)')}
+      />
     </div>
   );
 }

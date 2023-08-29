@@ -25,22 +25,22 @@ export default function RootLayout({
             <button
               type="button"
               aria-label="Use Dark Mode"
-              className="visible dark:invisible bg-gray-800 hover:bg-gray-900 shadow-lg rounded-lg p-4 text-white absolute top-0 right-0"
+              className="font-semibold uppercase visible dark:invisible bg-gray-800 hover:bg-gray-900 shadow-lg rounded-lg p-4 text-white absolute top-0 right-0"
               onClick={(e) => {
                 setTheme('dark');
               }}
             >
-              DARK
+              Dark Mode
             </button>
             <button
               type="button"
               aria-label="Use Light Mode"
-              className="invisible dark:visible bg-gray-500 hover:bg-gray-600 shadow-lg rounded-lg p-4 text-black absolute top-0 right-0"
+              className="font-semibold uppercase invisible dark:visible bg-gray-500 hover:bg-gray-600 shadow-lg rounded-lg p-4 text-black absolute top-0 right-0"
               onClick={(e) => {
                 setTheme('light');
               }}
             >
-              LIGHT
+              Light Mode
             </button>
           </Navigation>
           {children}

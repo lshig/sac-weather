@@ -1,8 +1,6 @@
 import { Weather, WeatherForecastProps } from '../utils/get-weather';
 import Image from 'next/image';
-import H1 from './h1';
-import H2 from './h2';
-import H3 from './h3';
+import HeadingsSection from './headings-section';
 
 export default function WeatherDayNightList({
   listItems,
@@ -25,13 +23,11 @@ export default function WeatherDayNightList({
                 height={100}
               />
             </div>
-            <div>
-              <H1>{item.name}</H1>
-              <H2>
-                {item.temperature}&deg;{item.temperatureUnit}
-              </H2>
-              <H3>{item.shortForecast}</H3>
-            </div>
+            <HeadingsSection
+              top={item.name}
+              middle={`${item.temperature}${'\u00b0'}${item.temperatureUnit}`}
+              last={item.shortForecast}
+            />
           </div>
         );
       }

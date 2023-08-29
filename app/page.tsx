@@ -1,9 +1,7 @@
 import type { Metadata } from 'next';
 import { getDayNightWeather, getHourlyWeather } from './utils/get-weather';
 import Section from './components/section';
-import H1 from './components/h1';
-import H2 from './components/h2';
-import H3 from './components/h3';
+import LocationDisplay from './components/location-display';
 import WeatherDayNightList from './components/weather-day-night-list';
 import WeatherHourlyChart from './components/weather-hourly-chart';
 import DateTimeDisplay from './components/date-time-display';
@@ -20,9 +18,7 @@ export default async function Page() {
   return (
     <div>
       <Section title="Location">
-        <H1>Sacramento, CA</H1>
-        <H2>95814</H2>
-        <H3>38.5816&deg; N, 121.4944&deg; W</H3>
+        <LocationDisplay />
       </Section>
       <Section title="Time & Date">
         <DateTimeDisplay />
