@@ -3,6 +3,7 @@
 import './globals.css';
 import { Inter } from 'next/font/google';
 import { useState } from 'react';
+import { BsFillMoonStarsFill, BsFillSunFill } from 'react-icons/bs';
 import Navigation from './components/navigation';
 import { ThemeContext } from './context';
 
@@ -13,11 +14,12 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const [theme, setTheme] = useState('light');
+  const [isDarkMode, setTheme] = useState(true);
+  const themeColor = isDarkMode ? 'dark' : '';
 
   return (
-    <ThemeContext.Provider value={{ theme, setTheme }}>
-      <html lang="en" className={theme}>
+    <ThemeContext.Provider value={isDarkMode}>
+      <html lang="en" className={themeColor}>
         <body
           className={`${inter.className} bg-white text-black dark:bg-black dark:text-white`}
         >
@@ -25,22 +27,22 @@ export default function RootLayout({
             <button
               type="button"
               aria-label="Use Dark Mode"
-              className="font-semibold uppercase visible dark:invisible bg-gray-800 hover:bg-gray-900 shadow-lg rounded-lg p-4 text-white absolute top-0 right-0"
+              className="font-semibold uppercase visible dark:invisible bg-gray-800 hover:bg-gray-900 shadow-lg rounded-lg p-2 text-white absolute top-0 right-0"
               onClick={(e) => {
-                setTheme('dark');
+                setTheme(true);
               }}
             >
-              Dark Mode
+              <BsFillMoonStarsFill />
             </button>
             <button
               type="button"
               aria-label="Use Light Mode"
-              className="font-semibold uppercase invisible dark:visible bg-gray-500 hover:bg-gray-600 shadow-lg rounded-lg p-4 text-black absolute top-0 right-0"
+              className="font-semibold uppercase invisible dark:visible bg-white hover:bg-gray-300 shadow-lg rounded-lg p-2 text-black absolute top-0 right-0"
               onClick={(e) => {
-                setTheme('light');
+                setTheme(false);
               }}
             >
-              Light Mode
+              <BsFillSunFill />
             </button>
           </Navigation>
           {children}

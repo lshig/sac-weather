@@ -17,12 +17,14 @@ export default async function Page() {
 
   return (
     <div>
-      <Section title="Location">
-        <LocationDisplay />
-      </Section>
-      <Section title="Time & Date">
-        <DateTimeDisplay />
-      </Section>
+      <div className="grid grid-cols-1 md:grid-cols-2 mx-auto max-w-4xl gap-x-8 mt-8">
+        <Section title="Location">
+          <LocationDisplay />
+        </Section>
+        <Section title="Time & Date">
+          <DateTimeDisplay />
+        </Section>
+      </div>
       <Section title="Today">
         <WeatherDayNightList listItems={dayNightWeather} showOnlyToday={true} />
       </Section>

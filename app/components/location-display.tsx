@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import { BsMap } from 'react-icons/bs';
 import HeadingsSection from './headings-section';
 
 export default function LocationDisplay() {
@@ -11,15 +11,12 @@ export default function LocationDisplay() {
           rel="noopener noreferrer"
         >
           <div
-            className="float-right bg-gray-300 hover:bg-gray-400 dark:bg-gray-700 dark:hover:bg-gray-800 flex flex-col"
+            className="float-right bg-gray-300 hover:bg-gray-400 dark:bg-gray-700 dark:hover:bg-gray-800 rounded-lg text-white dark:text-black flex flex-col"
             style={{ width: '100px', height: '100px' }}
           >
-            <Image
+            <BsMap
               className="flex flex-col items-center justify-center m-auto"
-              alt="Google Maps icon"
-              src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg"
-              width={40}
-              height={40}
+              style={{ width: '50px', height: '50px' }}
             />
           </div>
         </a>
