@@ -1,17 +1,17 @@
 import moment from 'moment';
 import 'moment-timezone';
+import ContentSection from './content-section';
 import HeadingsSection from './headings-section';
+import VisualSection from './visual-section';
+import VisualBox from './visual-box';
 
 export default function DateTimeDisplay() {
   const dateTimeNow = moment().tz('America/Los_Angeles');
 
   return (
-    <div className="max-w-xs md:mx-auto grid grid-cols-2 py-6">
-      <div className="pr-3">
-        <div
-          className="float-right bg-gray-300 dark:bg-gray-700 flex flex-col"
-          style={{ width: '100px', height: '100px' }}
-        >
+    <ContentSection>
+      <VisualSection>
+        <VisualBox>
           <div className="flex flex-col items-center justify-center m-auto">
             <div className="font-extralight leading-none tracking-tight text-6xl text-white dark:text-black">
               {dateTimeNow.format('ss')}
@@ -20,13 +20,13 @@ export default function DateTimeDisplay() {
               seconds
             </div>
           </div>
-        </div>
-      </div>
+        </VisualBox>
+      </VisualSection>
       <HeadingsSection
         top={`${dateTimeNow.format('dddd')} now`}
         middle={dateTimeNow.format('h:mmA')}
-        last={dateTimeNow.format('MMMM D (z)')}
+        bottom={dateTimeNow.format('MMMM D (z)')}
       />
-    </div>
+    </ContentSection>
   );
 }

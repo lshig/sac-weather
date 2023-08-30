@@ -1,6 +1,8 @@
 import { Weather, WeatherForecastProps } from '../utils/get-weather';
 import Image from 'next/image';
+import ContentSection from './content-section';
 import HeadingsSection from './headings-section';
+import VisualSection from './visual-section';
 
 export default function WeatherDayNightList({
   listItems,
@@ -10,25 +12,22 @@ export default function WeatherDayNightList({
     (result, item: Weather) => {
       if (item.isToday === showOnlyToday) {
         result.push(
-          <div
-            className="max-w-xs md:mx-auto grid grid-cols-2 py-6"
-            key={item.number}
-          >
-            <div className="pr-3">
+          <ContentSection key={item.number}>
+            <VisualSection>
               <Image
-                className="float-right"
+                className="md:float-right rounded-lg"
                 src={item.icon}
                 alt={item.shortForecast}
                 width={100}
                 height={100}
               />
-            </div>
+            </VisualSection>
             <HeadingsSection
               top={item.name}
               middle={`${item.temperature}${'\u00b0'}${item.temperatureUnit}`}
-              last={item.shortForecast}
+              bottom={item.shortForecast}
             />
-          </div>
+          </ContentSection>
         );
       }
 

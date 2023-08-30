@@ -6,17 +6,17 @@ import H3 from './h3';
 export default function HeadingsSection({
   top,
   middle,
-  last
+  bottom
 }: {
   top: React.ReactNode;
   middle: React.ReactNode;
-  last: ReactNode;
+  bottom: ReactNode;
 }) {
   return (
-    <div className="text-black dark:text-white">
+    <div className="text-black dark:text-white text-center md:text-left">
       <H1>{top}</H1>
       <H2>{middle}</H2>
-      <H3>{last}</H3>
+      <H3>{bottom}</H3>
     </div>
   );
 }

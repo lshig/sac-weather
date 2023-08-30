@@ -28,7 +28,7 @@ export default function RootLayout({
               type="button"
               aria-label="Use Dark Mode"
               className="font-semibold uppercase visible dark:invisible bg-gray-800 hover:bg-gray-900 shadow-lg rounded-lg p-2 text-white absolute top-0 right-0"
-              onClick={(e) => {
+              onClick={() => {
                 setTheme(true);
               }}
             >
@@ -38,7 +38,7 @@ export default function RootLayout({
               type="button"
               aria-label="Use Light Mode"
               className="font-semibold uppercase invisible dark:visible bg-white hover:bg-gray-300 shadow-lg rounded-lg p-2 text-black absolute top-0 right-0"
-              onClick={(e) => {
+              onClick={() => {
                 setTheme(false);
               }}
             >
