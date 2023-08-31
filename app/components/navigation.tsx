@@ -3,5 +3,5 @@ export default function Navigation({
 }: {
   children: React.ReactNode;
 }) {
-  return <div className="static">{children}</div>;
+  return <div className="sticky top-4">{children}</div>;
 }

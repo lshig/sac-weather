@@ -16,7 +16,7 @@ export default async function Page() {
   const hourlyWeather = await getHourlyWeather();
 
   return (
-    <div className="mt-6 mb-12">
+    <div className="pt-6 pb-12">
       <div className="grid grid-cols-1 md:grid-cols-2 mx-auto max-w-4xl gap-x-8">
         <PageSection title="Location">
           <LocationDisplay />

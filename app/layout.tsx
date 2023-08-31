@@ -21,29 +21,31 @@ export default function RootLayout({
     <ThemeContext.Provider value={isDarkMode}>
       <html lang="en" className={themeColor}>
         <body
-          className={`${inter.className} bg-white text-black dark:bg-black dark:text-white`}
+          className={`${inter.className} bg-gray-200 text-gray-950 dark:bg-gray-950 dark:text-gray-200`}
         >
           <Navigation>
-            <button
-              type="button"
-              aria-label="Use Dark Mode"
-              className="font-semibold uppercase visible dark:invisible bg-gray-800 hover:bg-gray-900 shadow-lg rounded-lg p-2 text-white absolute top-0 right-0"
-              onClick={() => {
-                setTheme(true);
-              }}
-            >
-              <BsFillMoonStarsFill />
-            </button>
-            <button
-              type="button"
-              aria-label="Use Light Mode"
-              className="font-semibold uppercase invisible dark:visible bg-white hover:bg-gray-300 shadow-lg rounded-lg p-2 text-black absolute top-0 right-0"
-              onClick={() => {
-                setTheme(false);
-              }}
-            >
-              <BsFillSunFill />
-            </button>
+            <div className="static">
+              <button
+                type="button"
+                aria-label="Use Dark Mode"
+                className="font-semibold uppercase visible dark:invisible bg-gray-950 hover:bg-gray-700 shadow-lg rounded-full p-2 text-gray-200 absolute right-4"
+                onClick={() => {
+                  setTheme(true);
+                }}
+              >
+                <BsFillMoonStarsFill />
+              </button>
+              <button
+                type="button"
+                aria-label="Use Light Mode"
+                className="font-semibold uppercase invisible dark:visible bg-gray-700 hover:bg-gray-400 shadow-lg rounded-full p-2 text-gray-200 absolute right-4"
+                onClick={() => {
+                  setTheme(false);
+                }}
+              >
+                <BsFillSunFill />
+              </button>
+            </div>
           </Navigation>
           {children}
         </body>

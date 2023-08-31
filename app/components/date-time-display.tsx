@@ -13,10 +13,10 @@ export default function DateTimeDisplay() {
       <VisualSection>
         <VisualBox>
           <div className="flex flex-col items-center justify-center m-auto">
-            <div className="font-extralight leading-none tracking-tight text-6xl text-white dark:text-black">
+            <div className="font-light leading-none tracking-tight text-5xl">
               {dateTimeNow.format('ss')}
             </div>
-            <div className="leading-none tracking-tight text-small text-white dark:text-black">
+            <div className="leading-none tracking-tight text-xs font-extralight">
               seconds
             </div>
           </div>

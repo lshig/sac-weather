@@ -35,13 +35,13 @@ ChartJS.register(
 export default function WeatherHourlyChart({ chartPoints }: WeatherGraphProps) {
   const isDarkMode = useContext(ThemeContext);
 
-  const gridColor = isDarkMode ? '#cccccc' : '#808080';
+  const gridColor = isDarkMode ? '#d1d5db' : '#6b7280';
   const [data] = useState({
     type: 'line',
     datasets: [
       {
-        backgroundColor: '#000000',
-        borderColor: '#000000',
+        backgroundColor: '#030712',
+        borderColor: '#030712',
         pointRadius: 2,
         data: chartPoints
       }
@@ -68,12 +68,8 @@ export default function WeatherHourlyChart({ chartPoints }: WeatherGraphProps) {
           major: {
             enabled: true
           },
-          font: (context) => {
-            if (context.tick && context.tick.major) {
-              return {
-                weight: 'bold'
-              };
-            }
+          font: {
+            style: 'italic'
           }
         }
       },
@@ -85,6 +81,9 @@ export default function WeatherHourlyChart({ chartPoints }: WeatherGraphProps) {
         border: { color: gridColor },
         ticks: {
           color: gridColor,
+          font: {
+            style: 'italic'
+          },
           callback: (value) => {
             return value + '°F';
           }

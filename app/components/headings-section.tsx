@@ -13,7 +13,7 @@ export default function HeadingsSection({
   bottom: ReactNode;
 }) {
   return (
-    <div className="text-black dark:text-white text-center md:text-left">
+    <div className="text-gray-950 dark:text-gray-200 text-center md:text-left">
       <H1>{top}</H1>
       <H2>{middle}</H2>
       <H3>{bottom}</H3>
