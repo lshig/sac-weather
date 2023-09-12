@@ -1,4 +1,5 @@
-import { Weather, WeatherForecastProps } from '../utils/get-weather';
+import classNames from 'classnames';
+import { WeatherForecastProps } from '../utils/get-weather';
 import Image from 'next/image';
 import ContentSection from './content-section';
 import HeadingsSection from './headings-section';
@@ -32,9 +33,14 @@ export default function WeatherDayNightList({
       </ContentSection>
     );
   });
-  const isTonight = isCustomLayoutRequired
-    ? ''
-    : 'grid grid-cols-1 md:grid-cols-2';
 
-  return <div className={isTonight}>{WeatherDayNightListItems}</div>;
+  return (
+    <div
+      className={classNames('', {
+        'grid grid-cols-1 md:grid-cols-2': !isCustomLayoutRequired
+      })}
+    >
+      {WeatherDayNightListItems}
+    </div>
+  );
 }

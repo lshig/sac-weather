@@ -1,3 +1,5 @@
+import classNames from 'classnames';
+
 export default function VisualBox({
   children,
   isHoverable
@@ -5,12 +7,14 @@ export default function VisualBox({
   children: React.ReactNode;
   isHoverable?: boolean;
 }) {
-  const hoverBackgroundColor = isHoverable
-    ? 'hover:bg-gray-400 dark:hover:bg-gray-600'
-    : '';
   return (
     <div
-      className={`md:float-right bg-gray-500 dark:bg-gray-700 ${hoverBackgroundColor} rounded-lg flex flex-col text-gray-300 dark:text-gray-950`}
+      className={classNames(
+        'md:float-right bg-gray-500 dark:bg-gray-700 rounded-lg flex flex-col text-gray-300 dark:text-gray-950',
+        {
+          'hover:bg-gray-400 dark:hover:bg-gray-600': isHoverable
+        }
+      )}
       style={{ width: '100px', height: '100px' }}
     >
       {children}
