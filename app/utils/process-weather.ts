@@ -1,5 +1,6 @@
 import moment from 'moment';
 import {
+  Weather,
   WeatherForecast,
   WeatherGraphSeries,
   WeatherResponse
@@ -22,6 +23,38 @@ export function processDayNightWeather(rawWeather: WeatherResponse) {
     processedWeather[i].isToday = isTimeToday(rawWeatherPeriods[i].startTime);
     processedWeather[i].time = processTime(rawWeatherPeriods[i].startTime);
   }
+  return processedWeather;
+}
+
+export function processDayNightTodayWeather(dayNightWeather: WeatherForecast) {
+  let processedWeather: WeatherForecast = dayNightWeather.reduce(
+    (result: WeatherForecast, item: Weather) => {
+      if (item.isToday) {
+        result.push(item);
+      }
+
+      return result;
+    },
+    []
+  );
+
+  return processedWeather;
+}
+
+export function processDayNightForecastWeather(
+  dayNightWeather: WeatherForecast
+) {
+  let processedWeather: WeatherForecast = dayNightWeather.reduce(
+    (result: WeatherForecast, item: Weather) => {
+      if (!item.isToday) {
+        result.push(item);
+      }
+
+      return result;
+    },
+    []
+  );
+
   return processedWeather;
 }
 

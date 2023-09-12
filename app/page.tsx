@@ -1,5 +1,9 @@
 import type { Metadata } from 'next';
 import { getDayNightWeather, getHourlyWeather } from './utils/get-weather';
+import {
+  processDayNightTodayWeather,
+  processDayNightForecastWeather
+} from './utils/process-weather';
 import PageSection from './components/page-section';
 import LocationDisplay from './components/location-display';
 import WeatherDayNightList from './components/weather-day-night-list';
@@ -14,6 +18,9 @@ export const metadata: Metadata = {
 export default async function Page() {
   const dayNightWeather = await getDayNightWeather();
   const hourlyWeather = await getHourlyWeather();
+  const dayNightTodayWeather = processDayNightTodayWeather(dayNightWeather);
+  const dayNightForecastWeather =
+    processDayNightForecastWeather(dayNightWeather);
 
   return (
     <div className="pt-6 pb-12">
@@ -25,16 +32,19 @@ export default async function Page() {
           <DateTimeDisplay />
         </PageSection>
       </div>
-      <PageSection title="Today">
-        <WeatherDayNightList listItems={dayNightWeather} showOnlyToday={true} />
-      </PageSection>
-      <PageSection title="Extended Days & Nights">
+      <PageSection title="Weather Today">
         <WeatherDayNightList
-          listItems={dayNightWeather}
+          listItems={dayNightTodayWeather}
+          showOnlyToday={true}
+        />
+      </PageSection>
+      <PageSection title="Weather Forecast">
+        <WeatherDayNightList
+          listItems={dayNightForecastWeather}
           showOnlyToday={false}
         />
       </PageSection>
-      <PageSection title="Hourly">
+      <PageSection title="Hourly Weather Forecast">
         <WeatherHourlyChart chartPoints={hourlyWeather} />
       </PageSection>
     </div>
