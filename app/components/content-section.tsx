@@ -5,7 +5,7 @@ export default function ContentSection({
   isDefaultMarginRemovable
 }: {
   children: React.ReactNode;
-  isDefaultMarginRemovable: boolean;
+  isDefaultMarginRemovable?: boolean;
 }) {
   return (
     <div
