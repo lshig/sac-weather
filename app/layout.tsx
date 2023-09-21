@@ -3,19 +3,37 @@
 import './globals.css';
 import classNames from 'classnames';
 import { Inter } from 'next/font/google';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ThemeContext } from './context';
 import ColorThemeButton from './components/color-theme-button';
 import Navigation from './components/navigation';
 
 const inter = Inter({ subsets: ['latin'] });
+const PREFERS_DARK_MODE_STORAGE_KEY = 'prefersDarkMode';
+
+function getInitialIsDarkMode(): boolean {
+  const storedPrefersDarkMode = window.localStorage?.getItem(
+    PREFERS_DARK_MODE_STORAGE_KEY
+  );
+
+  return storedPrefersDarkMode != null
+    ? JSON.parse(storedPrefersDarkMode)
+    : window.matchMedia?.('prefers-color-scheme: dark').matches ?? false;
+}
 
 export default function RootLayout({
   children
 }: {
   children: React.ReactNode;
 }) {
-  const [isDarkMode, setTheme] = useState(true);
+  const [isDarkMode, setTheme] = useState(getInitialIsDarkMode());
+
+  useEffect(() => {
+    window.localStorage.setItem(
+      PREFERS_DARK_MODE_STORAGE_KEY,
+      isDarkMode.toString()
+    );
+  }, [isDarkMode]);
 
   return (
     <ThemeContext.Provider value={isDarkMode}>
