@@ -1,4 +1,6 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Sacramento, CA USA
+
+An app to display local date, time, location, and weather for Sacramento, CA USA. This toy project was created to experiment with React, Next.js, Tailwind CSS, and TypeScript.
 
 ## Getting Started
 

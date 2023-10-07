@@ -11,8 +11,9 @@ import WeatherHourlyChart from './components/weather-hourly-chart';
 import DateTimeDisplay from './components/date-time-display';
 
 export const metadata: Metadata = {
-  title: 'Weather Forecast for Sacramento, CA',
-  description: 'A Next.js app with the NWS weather API'
+  title: 'Sacramento, CA USA',
+  description:
+    'An app to display local date, time, location, and weather for Sacramento, CA USA'
 };
 
 export default async function Page() {

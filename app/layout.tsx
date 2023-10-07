@@ -18,7 +18,7 @@ function getInitialIsDarkMode(): boolean {
 
   return storedPrefersDarkMode != null
     ? JSON.parse(storedPrefersDarkMode)
-    : window.matchMedia?.('prefers-color-scheme: dark').matches ?? false;
+    : window.matchMedia?.('(prefers-color-scheme: dark)').matches ?? false;
 }
 
 export default function RootLayout({
