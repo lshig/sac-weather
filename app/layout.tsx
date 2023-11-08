@@ -1,38 +1,46 @@
 'use client';
-
 import './globals.css';
 import classNames from 'classnames';
 import { Inter } from 'next/font/google';
 import { useState, useEffect } from 'react';
 import { ThemeContext } from './context';
+import isClient from './utils/is-client';
 import ColorThemeButton from './components/color-theme-button';
 import Navigation from './components/navigation';
 
 const inter = Inter({ subsets: ['latin'] });
 const PREFERS_DARK_MODE_STORAGE_KEY = 'prefersDarkMode';
 
-function getInitialIsDarkMode(): boolean {
-  const storedPrefersDarkMode = window.localStorage?.getItem(
-    PREFERS_DARK_MODE_STORAGE_KEY
-  );
-
-  return storedPrefersDarkMode != null
-    ? JSON.parse(storedPrefersDarkMode)
-    : window.matchMedia?.('(prefers-color-scheme: dark)').matches ?? false;
-}
-
 export default function RootLayout({
   children
 }: {
   children: React.ReactNode;
 }) {
-  const [isDarkMode, setTheme] = useState(getInitialIsDarkMode());
+  const [isDarkMode, setTheme] = useState(false);
 
   useEffect(() => {
-    window.localStorage.setItem(
-      PREFERS_DARK_MODE_STORAGE_KEY,
-      isDarkMode.toString()
-    );
+    if (isClient()) {
+      const storedPrefersDarkMode = window.localStorage?.getItem(
+        PREFERS_DARK_MODE_STORAGE_KEY
+      );
+
+      const initialIsDarkMode =
+        storedPrefersDarkMode != null
+          ? JSON.parse(storedPrefersDarkMode)
+          : window.matchMedia?.('(prefers-color-scheme: dark)').matches ??
+            false;
+
+      setTheme(initialIsDarkMode);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (isClient()) {
+      window.localStorage.setItem(
+        PREFERS_DARK_MODE_STORAGE_KEY,
+        isDarkMode.toString()
+      );
+    }
   }, [isDarkMode]);
 
   return (
