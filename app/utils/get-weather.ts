@@ -7,9 +7,7 @@ export async function getDayNightWeather() {
   try {
     const response = await fetch(
       'https://api.weather.gov/gridpoints/STO/38,65/forecast',
-      {
-        next: { revalidate: 60 }
-      }
+      { cache: 'no-store' }
     );
 
     let data = (await response.json()) as WeatherResponse;
@@ -24,9 +22,7 @@ export async function getHourlyWeather() {
   try {
     const response = await fetch(
       'https://api.weather.gov/gridpoints/STO/38,65/forecast/hourly',
-      {
-        next: { revalidate: 60 }
-      }
+      { cache: 'no-store' }
     );
 
     let data = (await response.json()) as WeatherResponse;

@@ -43,6 +43,7 @@ export default function DateTimeDisplay() {
         top={`${dateTimeNow.format('dddd')} now`}
         middle={dateTimeNow.format('h:mmA')}
         bottom={dateTimeNow.format('MMMM D (z)')}
+        isDateTime={true}
       />
     </ContentSection>
   );
