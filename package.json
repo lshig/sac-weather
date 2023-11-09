@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "format": "prettier --write '**/*.(js|ts|tsx)'",
     "lint": "next lint"
   },
   "dependencies": {
@@ -22,6 +23,7 @@
     "moment-timezone": "^0.5.43",
     "next": "13.4.10",
     "postcss": "8.4.26",
+    "prettier": "^3.0.3",
     "react": "18.2.0",
     "react-chartjs-2": "^5.2.0",
     "react-dom": "18.2.0",
