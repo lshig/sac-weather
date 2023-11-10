@@ -15,10 +15,10 @@ export default function HeadingsSection({
   isDateTime?: boolean;
 }) {
   return (
-    <div className="text-gray-950 dark:text-gray-200 text-center md:text-left" suppressHydrationWarning={isDateTime}>
-      <H1>{top}</H1>
-      <H2>{middle}</H2>
-      <H3>{bottom}</H3>
+    <div className="text-gray-950 dark:text-gray-200 text-center md:text-left">
+      <H1 isDateTime={isDateTime}>{top}</H1>
+      <H2 isDateTime={isDateTime}>{middle}</H2>
+      <H3 isDateTime={isDateTime}>{bottom}</H3>
     </div>
   );
 }

@@ -9,6 +9,7 @@ export default function ContentSection({
 }) {
   return (
     <div
+      data-testid="content-section"
       className={classNames(
         'max-w-xs mx-auto grid grid-cols-1 md:grid-cols-2 py-6',
         {

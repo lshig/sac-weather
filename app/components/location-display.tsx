@@ -9,9 +9,11 @@ export default function LocationDisplay() {
     <ContentSection>
       <VisualSection>
         <a
-          target="_blank"
+          aria-label="View Sacramento, CA on Google Maps"
           href="https://www.google.com/maps/place/Sacramento,+CA/"
           rel="noopener noreferrer"
+          role="link"
+          target="_blank"
         >
           <VisualBox isHoverable={true}>
             <BsMap
