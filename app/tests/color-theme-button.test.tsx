@@ -2,7 +2,7 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import ColorThemeButton from '../components/color-theme-button';
 
 describe('ColorThemeButton', () => {
-  it('should render a button with the correct icon and class when isDarkMode is false', () => {
+  it('should render a button with the correct icon and class when theme is false', () => {
     render(
       <ColorThemeButton handleToggleColorTheme={() => {}} isDarkMode={false} />
     );
@@ -15,7 +15,7 @@ describe('ColorThemeButton', () => {
     );
   });
 
-  it('should render a button with the correct icon and class when isDarkMode is true', () => {
+  it('should render a button with the correct icon and class when theme is true', () => {
     render(
       <ColorThemeButton handleToggleColorTheme={() => {}} isDarkMode={true} />
     );
