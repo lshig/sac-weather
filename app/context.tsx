@@ -46,30 +46,56 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     }
   }, [theme]);
 
+  const getColorThemeButton = (theme: string) => {
+    switch (theme) {
+      case 'light':
+        return (
+          <ColorThemeButton
+            theme="kings"
+            handleToggleColorTheme={() => setTheme('kings')}
+          />
+        );
+      case 'kings':
+        return (
+          <ColorThemeButton
+            theme="dark"
+            handleToggleColorTheme={() => setTheme('dark')}
+          />
+        );
+      case 'dark':
+        return (
+          <ColorThemeButton
+            theme="light"
+            handleToggleColorTheme={() => setTheme('light')}
+          />
+        );
+      default:
+        return (
+          <ColorThemeButton
+            theme="dark"
+            handleToggleColorTheme={() => setTheme('dark')}
+          />
+        );
+    }
+  };
+
   if (!theme) {
     return <PageLoader />;
   }
 
   return (
     <ThemeContext.Provider value={theme}>
-      <div className={classNames('', { dark: theme === 'dark' })}>
-        <div
-          className={`${inter.className} bg-gray-200 text-gray-950 dark:bg-gray-950 dark:text-gray-200`}
-        >
-          <Navigation>
-            <div className="static">
-              <ColorThemeButton
-                isDarkMode={true}
-                handleToggleColorTheme={() => setTheme('dark')}
-              />
-              <ColorThemeButton
-                isDarkMode={false}
-                handleToggleColorTheme={() => setTheme('light')}
-              />
-            </div>
-          </Navigation>
-          {children}
-        </div>
+      <div
+        className={classNames(`${inter.className}`, {
+          'bg-gray-200 text-gray-950': theme === 'light',
+          'bg-gray-950 text-gray-200': theme === 'dark',
+          'bg-purple-950 text-gray-200': theme === 'kings'
+        })}
+      >
+        <Navigation>
+          <div className="static">{getColorThemeButton(theme)}</div>
+        </Navigation>
+        {children}
       </div>
     </ThemeContext.Provider>
   );

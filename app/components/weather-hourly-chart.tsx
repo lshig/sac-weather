@@ -32,9 +32,10 @@ ChartJS.register(
 );
 
 export default function WeatherHourlyChart({ chartPoints }: WeatherGraphProps) {
-  const isDarkMode = useContext(ThemeContext);
+  const theme = useContext(ThemeContext);
 
-  const gridColor = isDarkMode === 'dark' ? '#d1d5db' : '#6b7280';
+  const gridColor =
+    theme === 'dark' || theme === 'kings' ? '#d1d5db' : '#6b7280';
   const [data] = useState({
     type: 'line',
     datasets: [

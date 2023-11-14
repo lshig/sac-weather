@@ -1,6 +1,6 @@
 export default function PageLoader() {
   return (
-    <div className="h-screen bg-gray-950 text-gray-200 grid grid-cols-1 content-center">
+    <div className="h-screen bg-purple-950 text-gray-200 grid grid-cols-1 content-center">
       <h2 className="text-base font-semibold text-center uppercase">
         Loading...
       </h2>

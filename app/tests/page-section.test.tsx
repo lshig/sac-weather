@@ -1,15 +1,45 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { customRender } from './custom-render';
 import PageSection from '../components/page-section';
 
 describe('PageSection', () => {
-  it('renders the title and children', () => {
+  let themeProviderProps = 'kings';
+
+  it('renders the title, children, and correct kings theme class', () => {
     const title = 'Test Title';
-    const children = <div>Test Children</div>;
-    const { getByText } = render(
-      <PageSection title={title}>{children}</PageSection>
+    const children = 'Test Children';
+    const { getByText } = customRender(
+      <PageSection title={title}>{children}</PageSection>,
+      themeProviderProps
     );
     expect(getByText(title)).toBeInTheDocument();
     expect(getByText('Test Children')).toBeInTheDocument();
+    expect(getByText('Test Children')).toHaveClass('bg-gray-500');
+  });
+
+  it('renders the title, children, and correct dark theme class', () => {
+    themeProviderProps = 'dark';
+    const title = 'Test Title';
+    const children = 'Test Children';
+    const { getByText } = customRender(
+      <PageSection title={title}>{children}</PageSection>,
+      themeProviderProps
+    );
+    expect(getByText(title)).toBeInTheDocument();
+    expect(getByText('Test Children')).toBeInTheDocument();
+    expect(getByText('Test Children')).toHaveClass('bg-gray-500');
+  });
+
+  it('renders the title, children, and correct light theme class', () => {
+    themeProviderProps = 'light';
+    const title = 'Test Title';
+    const children = 'Test Children';
+    const { getByText } = customRender(
+      <PageSection title={title}>{children}</PageSection>,
+      themeProviderProps
+    );
+    expect(getByText(title)).toBeInTheDocument();
+    expect(getByText('Test Children')).toBeInTheDocument();
+    expect(getByText('Test Children')).toHaveClass('bg-gray-300');
   });
 });

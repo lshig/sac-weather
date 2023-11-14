@@ -1,27 +1,54 @@
 import classNames from 'classnames';
-import { BsFillMoonStarsFill, BsFillSunFill } from 'react-icons/bs';
+import { BsFillMoonStarsFill, BsFillSunFill, BsDribbble } from 'react-icons/bs';
 
 export default function ColorThemeButton({
   handleToggleColorTheme,
-  isDarkMode
+  theme
 }: {
   handleToggleColorTheme: React.MouseEventHandler;
-  isDarkMode: boolean;
+  theme: string;
 }) {
+  const getIcon = (theme: string) => {
+    switch (theme) {
+      case 'dark':
+        return <BsFillMoonStarsFill />;
+      case 'light':
+        return <BsFillSunFill />;
+      case 'kings':
+        return <BsDribbble />;
+      default:
+        return <BsDribbble />;
+    }
+  };
+
+  const getAriaLabel = (theme: string) => {
+    switch (theme) {
+      case 'dark':
+        return 'Use Dark Mode';
+      case 'light':
+        return 'Use Light Mode';
+      case 'kings':
+        return 'Use Kings Mode';
+      default:
+        return 'Use Kings Mode';
+    }
+  };
+
   return (
     <button
       type="button"
-      aria-label={isDarkMode ? 'Use Dark Mode' : 'Use Light Mode'}
+      aria-label={getAriaLabel(theme)}
       className={classNames(
         'font-semibold uppercase shadow-lg rounded-full p-2 text-gray-200 absolute right-4',
         {
-          'visible dark:invisible bg-gray-950 hover:bg-gray-700': isDarkMode,
-          'invisible dark:visible bg-gray-700 hover:bg-gray-400': !isDarkMode
+          'bg-gray-950 hover:bg-gray-700': theme === 'dark',
+          'bg-gray-700 hover:bg-gray-400': theme === 'light',
+          'bg-purple-950 hover:bg-purple-700': theme === 'kings'
         }
       )}
       onClick={handleToggleColorTheme}
     >
-      {isDarkMode ? <BsFillMoonStarsFill /> : <BsFillSunFill />}
+      {getIcon(theme)}
     </button>
   );
 }

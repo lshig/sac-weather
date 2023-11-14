@@ -1,4 +1,7 @@
+'use client';
 import classNames from 'classnames';
+import { useContext } from 'react';
+import { ThemeContext } from '../context';
 
 export default function VisualBox({
   children,
@@ -7,14 +10,21 @@ export default function VisualBox({
   children: React.ReactNode;
   isHoverable?: boolean;
 }) {
+  const theme = useContext(ThemeContext);
+
   return (
     <div
-      className={classNames(
-        'md:float-right bg-gray-500 dark:bg-gray-700 rounded-lg flex flex-col text-gray-300 dark:text-gray-950',
-        {
-          'hover:bg-gray-400 dark:hover:bg-gray-600': isHoverable
-        }
-      )}
+      className={classNames('md:float-right rounded-lg flex flex-col', {
+        'text-gray-950 bg-gray-700': !isHoverable && theme === 'dark',
+        'text-gray-950 bg-gray-700 hover:bg-gray-600':
+          isHoverable && theme === 'dark',
+        'text-gray-300 bg-gray-950': !isHoverable && theme === 'kings',
+        'text-gray-300 bg-gray-950 hover:bg-gray-600':
+          isHoverable && theme === 'kings',
+        'text-gray-300 bg-gray-500': !isHoverable && theme === 'light',
+        'text-gray-300 bg-gray-500 hover:bg-gray-400':
+          isHoverable && theme === 'light'
+      })}
       style={{ width: '100px', height: '100px' }}
     >
       {children}
